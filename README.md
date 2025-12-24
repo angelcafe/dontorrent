@@ -6,6 +6,12 @@ Una aplicación web progresiva (PWA) moderna para explorar el catálogo de pelí
 ![License](https://img.shields.io/badge/license-Proprietary-red.svg)
 ![JavaScript](https://img.shields.io/badge/JavaScript-100%25-yellow.svg)
 
+## 🌐 Aplicación en Vivo
+
+**[🚀 Usar la aplicación](https://angelcastro.es/dontorrent)**
+
+Accede a la aplicación completa y funcional sin necesidad de instalación local.
+
 ## ✨ Características
 
 - 🎥 **Exploración de Películas y Series**: Navega por el catálogo completo de DonTorrent
@@ -46,12 +52,20 @@ dontorrent/
 
 ## 🛠️ Instalación y Uso
 
-### Requisitos Previos
+### Opción 1: Usar la Aplicación en Línea
+
+La forma más rápida de usar la aplicación es accediendo directamente a:
+
+**[https://angelcastro.es/dontorrent](https://angelcastro.es/dontorrent)**
+
+No requiere instalación, funciona directamente desde el navegador y puedes instalarla como PWA.
+
+### Opción 2: Servidor Web Local
+
+#### Requisitos Previos
 
 - Navegador web moderno (Chrome, Firefox, Safari, Edge)
 - Servidor web local (para probar la PWA)
-
-### Opción 1: Servidor Web Local
 
 ```bash
 # Con Python 3
@@ -69,13 +83,13 @@ php -S localhost:8000
 
 Luego abre `http://localhost:8000` en tu navegador.
 
-### Opción 2: Live Server (VS Code)
+### Opción 3: Live Server (VS Code)
 
 1. Instala la extensión "Live Server" en VS Code
 2. Haz clic derecho en `index.html`
 3. Selecciona "Open with Live Server"
 
-### Opción 3: GitHub Pages
+### Opción 4: GitHub Pages
 
 1. Sube el proyecto a un repositorio de GitHub
 2. Ve a Settings → Pages
