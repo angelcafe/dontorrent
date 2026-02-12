@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">DonTorrent - Películas y Series</title>
+
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Explorador de contenido de DonTorrent - Películas y Series">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="DonTorrent">
+
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="front/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="front/icons/icon-192x192.png">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+
+<body class="bg-dark text-light min-vh-100">
+    <header class="sticky-top shadow-lg bg-dark">
+        <div class="container-fluid pt-3 pb-1">
+            <div class="row align-items-center g-3 mb-3">
+                <div class="col">
+                    <div class="input-group">
+                        <div class="input-group-text bg-dark border-secondary d-flex align-items-center gap-1 px-2">
+                            <small class="fw-semibold text-secondary" id="phpLabel">PHP</small>
+                            <div class="form-check form-switch m-0 p-0">
+                                <input class="form-check-input m-0 mx-1" type="checkbox" role="switch" id="apiSwitch">
+                            </div>
+                            <small class="fw-semibold text-secondary" id="netLabel">.NET</small>
+                        </div>
+                        <input type="text" id="searchInput" class="form-control bg-dark text-light border-secondary" placeholder="Buscar en contenido cargado... (Ctrl+K)">
+                        <button class="btn btn-outline-secondary search-clear-btn d-none" id="searchClear" title="Limpiar búsqueda (ESC)">✕</button>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav nav-tabs border-bottom border-secondary">
+                <li class="nav-item">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#peliculas-section" data-tab="peliculas-section">
+                        🎥 <span id="moviesCount" class="badge bg-primary">0</span> Películas
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#series-section" data-tab="series-section">
+                        📺 <span id="seriesCount" class="badge bg-primary">0</span> Series
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="tab-content">
+            <div id="peliculas-section" class="tab-pane fade show active">
+                <div class="row row-cols-2 row-cols-sm-4 row-cols-md-5 row-cols-lg-6 g-4" id="peliculas-grid">
+                    <!-- Las películas se cargarán aquí dinámicamente -->
+                </div>
+                <div class="text-center py-5" id="empty-movies">
+                    <div class="display-1 opacity-50 mb-3">🎬</div>
+                    <h3 class="text-secondary">No hay películas cargadas</h3>
+                    <p class="text-secondary">Haz clic en el botón 🔄 para cargar contenido</p>
+                </div>
+            </div>
+
+            <div id="series-section" class="tab-pane fade">
+                <div class="row row-cols-2 row-cols-sm-4 row-cols-md-5 row-cols-lg-6 g-4" id="series-grid">
+                    <!-- Las series se cargarán aquí dinámicamente -->
+                </div>
+                <div class="text-center py-5" id="empty-series">
+                    <div class="display-1 opacity-50 mb-3">📺</div>
+                    <h3 class="text-secondary">No hay series cargadas</h3>
+                    <p class="text-secondary">Haz clic en el botón 🔄 para cargar contenido</p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="border-top border-secondary mt-5 py-4 text-center text-secondary">
+            <p class="mb-0">💜 Hecho por Ángel Castro - Frontend + API PHP</p>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    
+    <!-- Templates -->
+    <template id="card-template">
+        <div class="col">
+            <div class="card bg-dark text-white h-100 border-secondary">
+                <img class="card-img-top" loading="lazy">
+                <div class="card-body p-2">
+                    <a target="_blank" class="btn btn-sm btn-outline-primary w-100 text-start"></a>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="loading-template">
+        <div id="loadingIndicator" class="position-fixed top-50 start-50 translate-middle bg-dark bg-opacity-75 text-white p-4 rounded-3 text-center" style="z-index:9999;min-width:300px">
+            <div class="spinner-border text-primary mb-3"></div>
+            <div class="loading-text"></div>
+        </div>
+    </template>
+
+    <template id="error-template">
+        <div class="alert alert-danger alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3" style="z-index:10000;max-width:500px">
+            <strong>❌ Error:</strong> <span class="error-text"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    </template>
+
+    <script src="front/api-client.js"></script>
+    <script src="front/app.js"></script>
+</body>
+
+</html>
